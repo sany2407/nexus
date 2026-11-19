@@ -1,0 +1,140 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" width="600" height="600" name="Nexus Orbit" id="0:2">
+
+        <!-- Outer halo ring -->
+        <Shape x="300" y="300" name="Halo" id="0:40">
+            <Ellipse originX="0.5" originY="0.5" width="520" height="520" name="Path"/>
+            <Stroke thickness="10" cap="round" name="Glow">
+                <SolidColor colorValue="33F20D18" name="Color"/>
+                <Feather strength="12" name="Feather"/>
+            </Stroke>
+            <Stroke thickness="1" name="Crisp">
+                <LinearGradient startX="-260" startY="-260" endX="260" endY="260" name="Gradient">
+                    <GradientStop colorValue="00F20D18" position="0"/>
+                    <GradientStop colorValue="B3FF414B" position="0.5"/>
+                    <GradientStop colorValue="00F20D18" position="1"/>
+                </LinearGradient>
+            </Stroke>
+        </Shape>
+
+        <!-- Inner halo ring -->
+        <Shape x="300" y="300" name="Inner Halo">
+            <Ellipse originX="0.5" originY="0.5" width="380" height="380" name="Path"/>
+            <Stroke thickness="6" cap="round" name="Glow">
+                <SolidColor colorValue="26FF414B" name="Color"/>
+                <Feather strength="10" name="Feather"/>
+            </Stroke>
+            <Stroke thickness="1" name="Crisp">
+                <SolidColor colorValue="40FF414B" name="Color"/>
+            </Stroke>
+        </Shape>
+
+        <!-- Counter-rotating trim arc with orbiting satellite dots -->
+        <Node x="300" y="300" name="Orbit B" id="0:30">
+            <Shape x="0" y="0" name="Trim Arc B">
+                <Ellipse originX="0.5" originY="0.5" width="470" height="470" name="Path"/>
+                <Stroke thickness="2.5" cap="round" name="Stroke">
+                    <LinearGradient startX="-240" startY="0" endX="240" endY="0" name="Gradient">
+                        <GradientStop colorValue="00FF414B" position="0"/>
+                        <GradientStop colorValue="FFFF414B" position="1"/>
+                    </LinearGradient>
+                    <TrimPath start="0" end="0.18" name="Trim"/>
+                </Stroke>
+            </Shape>
+            <Shape x="0" y="235" name="Satellite B">
+                <Ellipse originX="0.5" originY="0.5" width="14" height="14" name="Path"/>
+                <Stroke thickness="6" name="Glow">
+                    <SolidColor colorValue="99F20D18" name="Color"/>
+                    <Feather strength="6" name="Feather"/>
+                </Stroke>
+                <Fill name="Core">
+                    <SolidColor colorValue="FFFF7A80" name="Color"/>
+                </Fill>
+            </Shape>
+            <Shape x="-230" y="0" name="Tiny Dot B">
+                <Ellipse originX="0.5" originY="0.5" width="5" height="5" name="Path"/>
+                <Fill name="Core">
+                    <SolidColor colorValue="CCFF414B" name="Color"/>
+                </Fill>
+            </Shape>
+        </Node>
+
+        <!-- Main rotating trim arc + satellite -->
+        <Node x="300" y="300" name="Orbit A" id="0:20">
+            <Shape x="0" y="0" name="Trim Arc A">
+                <Ellipse originX="0.5" originY="0.5" width="520" height="520" name="Path"/>
+                <Stroke thickness="2" cap="round" name="Stroke">
+                    <LinearGradient startX="0" startY="-270" endX="0" endY="270" name="Gradient">
+                        <GradientStop colorValue="00F20D18" position="0"/>
+                        <GradientStop colorValue="FFFF414B" position="0.55"/>
+                        <GradientStop colorValue="33F20D18" position="1"/>
+                    </LinearGradient>
+                    <TrimPath start="0.58" end="0.92" name="Trim"/>
+                </Stroke>
+            </Shape>
+            <Shape x="0" y="-260" name="Satellite A">
+                <Ellipse originX="0.5" originY="0.5" width="12" height="12" name="Path"/>
+                <Stroke thickness="5" name="Glow">
+                    <SolidColor colorValue="99F20D18" name="Color"/>
+                    <Feather strength="6" name="Feather"/>
+                </Stroke>
+                <Fill name="Core">
+                    <SolidColor colorValue="FFFFD9DB" name="Color"/>
+                </Fill>
+            </Shape>
+        </Node>
+
+        <!-- Pulsing equatorial arc -->
+        <Shape x="300" y="300" name="Pulse Arc" id="0:50">
+            <Ellipse originX="0.5" originY="0.5" width="430" height="430" name="Path"/>
+            <Stroke thickness="1.5" cap="round" name="Stroke">
+                <SolidColor colorValue="FFFF414B" name="Color"/>
+                <TrimPath start="0.02" end="0.98" name="Trim"/>
+                <DashPath name="Dashes">
+                    <Dash length="2" name="On"/>
+                    <Dash length="10" name="Off"/>
+                </DashPath>
+            </Stroke>
+        </Shape>
+
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="Layer 1" id="0:8">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState>
+                    <StateTransition stateToId="0:12"/>
+                </EntryState>
+                <AnimationState x="200" animationId="0:6" id="0:12"/>
+            </StateMachineLayer>
+        </StateMachine>
+
+        <LinearAnimation duration="600" loopValue="loop" name="Orbit" id="0:6">
+            <KeyedObject objectId="0:20">
+                <KeyedProperty propertyKey="15">
+                    <KeyFrameDouble value="0" interpolationType="linear"/>
+                    <KeyFrameDouble value="6.2831855" interpolationType="linear" frame="600"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:30">
+                <KeyedProperty propertyKey="15">
+                    <KeyFrameDouble value="0" interpolationType="linear"/>
+                    <KeyFrameDouble value="-3.1415927" interpolationType="linear" frame="600"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:50">
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0.25" interpolationType="linear"/>
+                    <KeyFrameDouble value="0.7" interpolationType="linear"/>
+                    <KeyFrameDouble value="0.25" interpolationType="linear" frame="600"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:40">
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0.55" interpolationType="linear"/>
+                    <KeyFrameDouble value="0.95" interpolationType="linear" frame="300"/>
+                    <KeyFrameDouble value="0.55" interpolationType="linear" frame="600"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+    </Artboard>
+</Rive>

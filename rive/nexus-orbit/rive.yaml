@@ -1,0 +1,6 @@
+name: abielan-nexus
+output:
+  dir: ../../public/assets
+logs:
+  file: build/rive.log
+  problems: build/problems.log
